@@ -5,8 +5,10 @@ import MyOrder from "../MyOrder";
 import MyOrders from "../MyOrders";
 import NotFound from "../NotFound";
 import SignIn from "../SignIn";
+import { Navbar } from "../../Components/Navbar";
 
 import "./App.css";
+
 
 function AppRoutes() {
   let routes = useRoutes([
@@ -20,10 +22,13 @@ function AppRoutes() {
   return routes;
 }
 
+
 function App() {
   return (
+    
     <BrowserRouter>
       <AppRoutes />
+      <Navbar />
     </BrowserRouter>
   );
 }

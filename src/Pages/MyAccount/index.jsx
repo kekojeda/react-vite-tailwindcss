@@ -1,17 +1,11 @@
 
 
 function MyAccount() {
-  
-
   return (
     <>
-      <div className='bg-red-700'>
-      MyAccount
-        
-      </div>
-      
+    MyAccount
     </>
-  )
+  );
 }
 
-export default MyAccount
+export default MyAccount;
