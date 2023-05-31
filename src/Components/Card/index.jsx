@@ -9,14 +9,22 @@ function Card({ item }) {
     isProductDetailOpen,
     setIsProductDetailOpen,
     openProductDetail,
+    setCardDetail,
   } = useContext(ShoppingCartContext);
 
   function SumaCarrito() {
     setCartCount(cartCount + 1);
   }
+
+  function showCardDetail() {
+    openProductDetail()
+    setCardDetail(item);
+  }
+
+
   return (
     <div
-      onClick={openProductDetail}
+      onClick={showCardDetail}
       className="bg-white cursor-pointer w-56 h-60 rounded-lg"
     >
       <figure className="relative mb-2 w-full h-4/5">

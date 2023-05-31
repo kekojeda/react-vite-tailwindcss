@@ -6,6 +6,8 @@ function ShoppingCartProvider({ children }) {
   const [cartCount, setCartCount] = useState(0);
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
 
+  const [cardDetail, setCardDetail] = useState({});
+  
   function openProductDetail() {
     setIsProductDetailOpen(!isProductDetailOpen);
   }
@@ -16,8 +18,9 @@ function ShoppingCartProvider({ children }) {
         cartCount,
         setCartCount,
         isProductDetailOpen,
-
         openProductDetail,
+        setCardDetail,
+        cardDetail
       }}
     >
       {children}
