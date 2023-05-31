@@ -8,7 +8,7 @@ import SignIn from "../SignIn";
 import { Navbar } from "../../Components/Navbar";
 
 import "./App.css";
-
+import { ShoppingCartProvider } from "../../Context";
 
 function AppRoutes() {
   let routes = useRoutes([
@@ -22,14 +22,14 @@ function AppRoutes() {
   return routes;
 }
 
-
 function App() {
   return (
-    
-    <BrowserRouter>
-      <AppRoutes />
-      <Navbar />
-    </BrowserRouter>
+    <ShoppingCartProvider>
+      <BrowserRouter>
+        <AppRoutes />
+        <Navbar />
+      </BrowserRouter>
+    </ShoppingCartProvider>
   );
 }
 
