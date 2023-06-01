@@ -4,8 +4,12 @@ import { ShoppingCartContext } from "../../Context";
 import "./index.css";
 
 function ProductDetail() {
-  const { isProductDetailOpen, openProductDetail, cardDetail } =
-    useContext(ShoppingCartContext);
+  const {
+    isProductDetailOpen,
+    openProductDetail,
+    cardDetail,
+    closeProductDetail,
+  } = useContext(ShoppingCartContext);
 
   return (
     <aside
@@ -15,18 +19,22 @@ function ProductDetail() {
     >
       <div className="flex justify-between items-center p-6">
         <h2 className="font-medium text-xl">Detail</h2>
-        <button onClick={openProductDetail}>
+        <button onClick={closeProductDetail}>
           <XMarkIcon className="h-8 w-8 text-black" />
         </button>
       </div>
-      <figure className="max">
+      <figure className="px-6 h-2/5">
         <img
-          className="w-full h-full rounded-lg"
+          className="w-full h-full object-contain rounded-lg"
           src={cardDetail.image}
           alt={cardDetail.title}
         />
       </figure>
-      <p>{cardDetail.title}</p>
+      <p className="flex flex-col p-6">
+        <span className="font-medium text-2xl mb-4">${cardDetail.price}</span>
+        <span className="font-medium text-md mb-3">{cardDetail.title}</span>
+        <span className="font-ligth text-sm">{cardDetail.description}</span>
+      </p>
     </aside>
   );
 }

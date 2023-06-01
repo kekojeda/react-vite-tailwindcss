@@ -10,17 +10,21 @@ function Card({ item }) {
     setIsProductDetailOpen,
     openProductDetail,
     setCardDetail,
+    closeProductDetail,
+    setCartProducts,
+    cartProducts,
   } = useContext(ShoppingCartContext);
 
   function SumaCarrito() {
     setCartCount(cartCount + 1);
+    setCartProducts([...cartProducts, item]);
+    console.log(cartProducts);
   }
 
   function showCardDetail() {
-    openProductDetail()
+    openProductDetail();
     setCardDetail(item);
   }
-
 
   return (
     <div
@@ -32,7 +36,7 @@ function Card({ item }) {
           {item.category}
         </span>
         <img
-          className="w-full h-full object-cover rounded-lg"
+          className="w-full h-full object-contain rounded-lg"
           src={item.image}
           alt={item.title}
         />
