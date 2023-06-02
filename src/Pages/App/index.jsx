@@ -9,6 +9,7 @@ import { Navbar } from "../../Components/Navbar";
 
 import "./App.css";
 import { ShoppingCartProvider } from "../../Context";
+import { CheckOutSideMenu } from "../../Components/CheckOutSideMenu";
 
 function AppRoutes() {
   let routes = useRoutes([
@@ -28,8 +29,10 @@ function App() {
       <BrowserRouter>
         <AppRoutes />
         <Navbar />
+        <CheckOutSideMenu />
       </BrowserRouter>
     </ShoppingCartProvider>
+   
   );
 }
 

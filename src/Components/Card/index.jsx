@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { ShoppingCartContext } from "../../Context";
 import { PlusIcon } from "@heroicons/react/24/outline";
+import { CheckIcon } from "@heroicons/react/24/outline";
 
 function Card({ item }) {
   const {
@@ -13,17 +14,42 @@ function Card({ item }) {
     closeProductDetail,
     setCartProducts,
     cartProducts,
+    openCheckOutDetail,
   } = useContext(ShoppingCartContext);
 
-  function SumaCarrito() {
+  function SumaCarrito(event) {
+    event.stopPropagation();
     setCartCount(cartCount + 1);
     setCartProducts([...cartProducts, item]);
+    openCheckOutDetail();
+    closeProductDetail();
     console.log(cartProducts);
   }
 
   function showCardDetail() {
     openProductDetail();
     setCardDetail(item);
+  }
+
+  function renderIcon(id) {
+    const isInCart = cartProducts.filter((item) => item.id === id).length > 0;
+
+    if (isInCart) {
+      return (
+        <div className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1">
+          <CheckIcon className="w-6 h-6" />
+        </div>
+      );
+    } else {
+      return (
+        <div
+          className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
+          onClick={(event) => SumaCarrito(event)}
+        >
+          <PlusIcon className="w-6 h-6" />
+        </div>
+      );
+    }
   }
 
   return (
@@ -40,12 +66,7 @@ function Card({ item }) {
           src={item.image}
           alt={item.title}
         />
-        <div
-          className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
-          onClick={SumaCarrito}
-        >
-          <PlusIcon className="w-6 h-6" />
-        </div>
+        {renderIcon(item.id)}
       </figure>
       <p className="flex justify-between">
         <span className="text-sm font-light">{item.title}</span>
