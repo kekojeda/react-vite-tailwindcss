@@ -5,6 +5,9 @@ const ShoppingCartContext = createContext();
 function ShoppingCartProvider({ children }) {
   const [cartCount, setCartCount] = useState(0);
   const [cartProducts, setCartProducts] = useState([]);
+
+  const [order, setOrder] = useState([]);
+
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
   const [isCheckOutOpen, setIsCheckOutOpen] = useState(false);
 
@@ -26,6 +29,14 @@ function ShoppingCartProvider({ children }) {
     setIsCheckOutOpen(false);
   }
 
+  function priceCart() {
+    let priceCart = 0;
+    cartProducts.map((product) => {
+      priceCart += product.price;
+    });
+    return priceCart;
+  }
+
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -41,6 +52,9 @@ function ShoppingCartProvider({ children }) {
         openCheckOutDetail,
         closeCheckOutDetail,
         isCheckOutOpen,
+        priceCart,
+        order, 
+        setOrder
       }}
     >
       {children}

@@ -68,8 +68,8 @@ function Card({ item }) {
         />
         {renderIcon(item.id)}
       </figure>
-      <p className="flex justify-between">
-        <span className="text-sm font-light">{item.title}</span>
+      <p className="flex justify-between ">
+        <span className="text-sm font-light line-clamp-1">{item.title}</span>
         <span className="text-lg font-medium">{item.price}</span>
       </p>
     </div>
