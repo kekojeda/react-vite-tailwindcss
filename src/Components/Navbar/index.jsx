@@ -60,14 +60,6 @@ function Navbar() {
             Jewelery
           </NavLink>
         </li>
-        <li>
-          <NavLink
-            to="/orders"
-            className={({ isActive }) => (isActive ? activeStyle : undefined)}
-          >
-            Orders
-          </NavLink>
-        </li>
       </ul>
 
       <ul className="flex items-center gap-3">

@@ -4,9 +4,9 @@ import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 
 function Cart(){
 
-    const {cartCount} = useContext(ShoppingCartContext)
+    const {cartProducts} = useContext(ShoppingCartContext)
     return(
-        <div className="flex"><ShoppingCartIcon className="w-5 h-5"/>  {cartCount}</div>
+        <div className="flex"><ShoppingCartIcon className="w-5 h-5"/>  {cartProducts.length}</div>
     )
 }
 
